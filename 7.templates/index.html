@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Churn Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Telecommunication Churn Prediction (Gradient Boosting)</h1>
+    <form action="/predict" method="POST">
+        <div class="form-group">
+            <label>State:</label>
+            <select name="state" required>
+                {% for state in states %}
+                    <option value="{{ state }}">{{ state }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Area Code:</label>
+            <select name="area_code" required>
+                {% for code in area_codes %}
+                    <option value="{{ code }}">{{ code }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Account Length:</label>
+            <input type="number" name="account_length" min="0" value="100" required>
+        </div>
+        <div class="form-group">
+            <label>Voice Plan:</label>
+            <select name="voice_plan" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Voice Messages:</label>
+            <input type="number" name="voice_messages" min="0" value="0" required>
+        </div>
+        <div class="form-group">
+            <label>International Plan:</label>
+            <select name="intl_plan" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>International Minutes:</label>
+            <input type="number" step="0.1" name="intl_mins" min="0" value="10.0" required>
+        </div>
+        <div class="form-group">
+            <label>International Calls:</label>
+            <input type="number" name="intl_calls" min="0" value="3" required>
+        </div>
+        <div class="form-group">
+            <label>International Charge:</label>
+            <input type="number" step="0.01" name="intl_charge" min="0" value="2.7" required>
+        </div>
+        <div class="form-group">
+            <label>Day Minutes:</label>
+            <input type="number" step="0.1" name="day_mins" min="0" value="180.0" required>
+        </div>
+        <div class="form-group">
+            <label>Day Calls:</label>
+            <input type="number" name="day_calls" min="0" value="100" required>
+        </div>
+        <div class="form-group">
+            <label>Day Charge:</label>
+            <input type="number" step="0.01" name="day_charge" min="0" value="30.0" required>
+        </div>
+        <div class="form-group">
+            <label>Evening Minutes:</label>
+            <input type="number" step="0.1" name="eve_mins" min="0" value="200.0" required>
+        </div>
+        <div class="form-group">
+            <label>Evening Calls:</label>
+            <input type="number" name="eve_calls" min="0" value="100" required>
+        </div>
+        <div class="form-group">
+            <label>Evening Charge:</label>
+            <input type="number" step="0.01" name="eve_charge" min="0" value="17.0" required>
+        </div>
+        <div class="form-group">
+            <label>Night Minutes:</label>
+            <input type="number" step="0.1" name="night_mins" min="0" value="200.0" required>
+        </div>
+        <div class="form-group">
+            <label>Night Calls:</label>
+            <input type="number" name="night_calls" min="0" value="100" required>
+        </div>
+        <div class="form-group">
+            <label>Night Charge:</label>
+            <input type="number" step="0.01" name="night_charge" min="0" value="9.0" required>
+        </div>
+        <div class="form-group">
+            <label>Customer Service Calls:</label>
+            <input type="number" name="customer_calls" min="0" value="1" required>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
